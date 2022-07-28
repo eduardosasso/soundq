@@ -1,6 +1,11 @@
 <script>
   import inRange from "lodash-es/inRange";
 
+  // if added to home screen reload page if it was hidden
+  window.addEventListener("visibilitychange", () => {
+    location.reload();
+  });
+
   // get reference of the canvas elemen from the DOM
   let canvas;
   $: if (canvas) start();
@@ -36,7 +41,7 @@
     navigator.mediaDevices.getUserMedia(userMediaParams).then((stream) => {
       const source = audioCtx.createMediaStreamSource(stream);
       source.connect(analyser);
-    
+
       visualiser();
     });
   };
