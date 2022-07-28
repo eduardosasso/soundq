@@ -2,9 +2,9 @@
   import inRange from "lodash-es/inRange";
 
   // if added to home screen reload page if it was hidden
-  window.addEventListener("visibilitychange", () => {
-    location.reload();
-  });
+  // window.addEventListener("visibilitychange", () => {
+  //   location.reload();
+  // });
 
   // get reference of the canvas elemen from the DOM
   let canvas;
