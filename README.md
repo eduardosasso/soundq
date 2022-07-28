@@ -7,3 +7,19 @@
 </div>
 
 **[Soundq](https://soundq.co)** is an audio display equalizer built in Javascript inspired by the HiFi systems from the ’80s and ’90s that works by listening to your device’s microphone using the [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API).
+
+<div align="center">
+  <p>
+      <video
+        autoplay=""
+        muted=""
+        loop=""
+        playsinline=""
+        preload="auto"
+        controls
+      >
+        <source src="video.mp4" type="video/mp4" />
+        Your browser doesn't support the video tag.
+      </video>
+  </p>
+</div>
