@@ -18,7 +18,7 @@ npm install
 npm run dev
 ```
 
-The code is pretty straightforward and easy to [customize things like](src/app.svelte):
+The code is pretty straightforward and easy to [customize things like](src/App.svelte):
 - Bars
 - Thickness 
 - Gap
