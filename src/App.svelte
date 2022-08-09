@@ -5,7 +5,7 @@
   let canvas;
   $: if (canvas) start();
 
-  const bars = 6;
+  const bars = 8;
   const barGap = 40;
   const barWidth = 100;
   const barColor = "#fff";
@@ -68,7 +68,7 @@
 
       // create a bucket like structure
       // each bar contains a bucket of frequencies
-      for (let bar = 0; bar < bars; bar++) {
+      for (let bar = 0; bar < bars / 2; bar++) {
         const begin = bar * frequenciesPerBar;
         const end = frequenciesPerBar * (bar + 1) + 1;
 
@@ -81,6 +81,7 @@
         // barHeightY = frequencies[index] * 3;
 
         stereoClassic(bar, frequencies[index]);
+        stereoClassic(bars - (bar + 1), frequencies[index]);
 
         break;
       }
