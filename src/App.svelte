@@ -5,16 +5,21 @@
   let canvas;
   $: if (canvas) start();
 
-  const bars = 8;
+  const bars = 6;
   const barGap = 40;
   const barWidth = 100;
   const barColor = "#fff";
 
-  const frequencySize = 128;
+  const frequencySize = 256;
   const maxAmplitude = 255;
 
   const userMediaParams = {
-    audio: true,
+    audio: {
+      echoCancellation: true,
+      autoGainControl: false,
+      noiseSuppression: true,
+      latency: 0,
+    },
     video: false,
   };
 
@@ -33,8 +38,6 @@
       const source = audioCtx.createMediaStreamSource(stream);
       source.connect(analyser);
 
-      // stereoClassic(3, 48, 110);
-      // stereoClassic(1, 48, 110);
       visualiser();
     });
   };
@@ -112,7 +115,7 @@
       for (let level = 0; level < soundLevels; level++) {
         const y = yStart - (levelHeight + levelGap) * level;
 
-        canvasContext.fillStyle = "#060606";
+        canvasContext.fillStyle = "#141414";
 
         if (filledLevels > 0 && level <= filledLevels) {
           const ampRange = (level / soundLevels) * 100;
@@ -156,6 +159,6 @@
 <!-- TODO height vh in tailwind, detect landscape change height, also affect level height maybe-->
 <main class="bg-black">
   <div class="min-h-screen flex items-center justify-center flex-col">
-    <canvas bind:this={canvas} style="height: 25vh;" class="w-full" />
+    <canvas bind:this={canvas} style="height: 50vh;" class="w-full " />
   </div>
 </main>
