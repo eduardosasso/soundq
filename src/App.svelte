@@ -52,9 +52,7 @@
     analyser.getByteFrequencyData(dataArray);
 
     const canvasContext = canvas.getContext("2d");
-    // canvasContext.fillStyle = barColor;
-    // canvasContext.scale(window.devicePixelRatio, window.devicePixelRatio);
-    // canvasContext.clearRect(0, 0, canvas.width, canvas.height);
+    canvasContext.clearRect(0, 0, canvas.width, canvas.height);
 
     // discard frequencies with no amplitude
     const frequencies = dataArray.filter((freq) => freq > 0);
@@ -74,27 +72,27 @@
 
         if (!inRange(index, begin, end)) continue;
 
-        // find the correct x pos for each bar
-        // barPosXx = barPosX(bar);
-
-        // get the amplitude of the frequency times number to make it bigger
-        // barHeightY = frequencies[index] * 3;
+        // appleMusic(bar, frequencies[index]);
+        // appleMusic(bars - (bar + 1), frequencies[index]);
 
         stereoClassic(bar, frequencies[index]);
         stereoClassic(bars - (bar + 1), frequencies[index]);
-
+        
         break;
       }
-
-      // const x = barPosXx;
-      // const y = canvas.height - barHeightY;
-      // const width = barWidth;
-      // const height = barHeightY;
-
-      // canvasContext.fillStyle = barColor;
-      // canvasContext.fillRect(x, y, width, height);
     });
   };
+
+  const appleMusic = (bar, amplitude) => {
+    const canvasContext = canvas.getContext("2d");
+    const x = barPosX(bar);
+    const y = canvas.height - amplitude;
+    const width = barWidth;
+    const height = amplitude;
+
+    canvasContext.fillStyle = barColor;
+    canvasContext.fillRect(x, y, width, height);
+  }
 
   const stereoClassic = (soundBar = null, amplitude = null) => {
     const canvasContext = canvas.getContext("2d");
